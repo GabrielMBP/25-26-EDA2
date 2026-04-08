@@ -3,11 +3,11 @@
 ---
 
 ## Integrantes del Grupo
-| **Gabriel Béjar** | Desarrollador |
-| **Miguel Gómez** | Desarrollador |
-| **Carlos Alvarado** | Desarrollador |
-| **Nicolás Navas** | Desarrollador |
-| **Samuel Herrera** | Desarrollador |
+ **Gabriel Béjar** 
+ **Miguel Gómez**
+ **Carlos Alvarado**
+ **Nicolás Navas**
+ **Samuel Herrera**
 
 ---
 
