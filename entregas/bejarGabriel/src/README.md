@@ -3,7 +3,7 @@
 ---
 
 ## Integrantes del Grupo
- **Gabriel Béjar** 
+ **Gabriel Béjar**
  **Miguel Gómez**
  **Carlos Alvarado**
  **Nicolás Navas**
@@ -19,6 +19,51 @@
 * En cada paso, se comprueba si la suma mantiene la posibilidad de ser válida.
 * Si en algún punto la combinación deja de ser viable, el algoritmo retrocede (**backtrack**) y prueba con el siguiente número disponible.
 * Al completar la asignación de todas las letras, se valida la ecuación fundamental:  
+
+---
+
+### Topología
+
+ **Identificar caso base** (Condición de parada)
+  Ocurre cuando el algoritmo ya ha procesado todas las letras del arreglo.
+  ```java
+  if (indice == letters.length) {
+      return verifySum(option);
+  }
+  ```
+ **Identificar poda** (Descarte de caminos inválidos)
+Evita procesar ramas donde el dígito ya está en uso o si se intenta asignar un cero a las letras iniciales de las palabras.
+
+```java
+boolean esCeroInvalido = (digit == 0) && ((option == 1 && (caracterActual == 'S' || caracterActual == 'M')));
+
+if (!esCeroInvalido && !used[digit]) 
+
+```
+
+ **Identificar hacer** (Marcar el estado / Tomar decisión)
+Se reserva el dígito marcándolo como usado y se le asigna el valor a la letra actual.
+
+```java
+used[digit] = true;
+values[caracterActual] = digit;
+```
+
+ **Identificar llamada recursiva** (Avanzar en el árbol de decisiones)
+Se llama a la misma función pasando a la siguiente letra (indice + 1).
+
+```java
+if (resolve(letters, indice + 1, option)) {
+    return true;
+}
+```
+
+ **Identificar deshacer** (Backtracking / Revertir el estado)
+Si la llamada recursiva no devolvió éxito, se desmarca el dígito para liberarlo y probar con el siguiente en el ciclo for.
+
+```java
+used[digit] = false;
+```
 
 ---
 
