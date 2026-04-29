@@ -12,11 +12,11 @@ public class MergeSortIterativo {
 
     public static void ordenarIterativo(int[] array) {
         int n = array.length;
-        for (int tamano = 1; tamano < n; tamano *= 2) {
-            System.out.println("--- Iniciando ciclo externo: tamano de sub-arrays a evaluar = " + tamano + " ---");
-            for (int izquierda = 0; izquierda < n - tamano; izquierda += 2 * tamano) {
-                int medio = izquierda + tamano - 1;
-                int derecha = Math.min(izquierda + 2 * tamano - 1, n - 1);
+        for (int tamaño = 1; tamaño < n; tamaño *= 2) {
+            System.out.println("--- Iniciando ciclo externo: tamaño de sub-arrays a evaluar = " + tamaño + " ---");
+            for (int izquierda = 0; izquierda < n - tamaño; izquierda += 2 * tamaño) {
+                int medio = izquierda + tamaño - 1;
+                int derecha = Math.min(izquierda + 2 * tamaño - 1, n - 1);
                 
                 System.out.println("Definiendo limites para fusion: izquierda=" + izquierda + ", medio=" + medio + ", derecha=" + derecha);
                 fusionar(array, izquierda, medio, derecha);
@@ -25,17 +25,17 @@ public class MergeSortIterativo {
     }
 
     private static void fusionar(int[] array, int izquierda, int medio, int derecha) {
-        int tamanoIzquierda = medio - izquierda + 1;
-        int tamanoDerecha = derecha - medio;
+        int tamañoIzquierda = medio - izquierda + 1;
+        int tamañoDerecha = derecha - medio;
         
-        int[] mitadIzquierda = new int[tamanoIzquierda];
-        int[] mitadDerecha = new int[tamanoDerecha];
+        int[] mitadIzquierda = new int[tamañoIzquierda];
+        int[] mitadDerecha = new int[tamañoDerecha];
         
-        System.out.println("Copiando datos a sub-arrays temporales de tamanos " + tamanoIzquierda + " y " + tamanoDerecha);
-        for (int i = 0; i < tamanoIzquierda; i++) {
+        System.out.println("Copiando datos a sub-arrays temporales de tamaños " + tamañoIzquierda + " y " + tamañoDerecha);
+        for (int i = 0; i < tamañoIzquierda; i++) {
             mitadIzquierda[i] = array[izquierda + i];
         }
-        for (int i = 0; i < tamanoDerecha; i++) {
+        for (int i = 0; i < tamañoDerecha; i++) {
             mitadDerecha[i] = array[medio + 1 + i];
         }
         
@@ -43,7 +43,7 @@ public class MergeSortIterativo {
         int j = 0;
         int k = izquierda;
         
-        while (i < tamanoIzquierda && j < tamanoDerecha) {
+        while (i < tamañoIzquierda && j < tamañoDerecha) {
             System.out.println("Comparando mitadIzquierda[" + i + "] (" + mitadIzquierda[i] + ") <= mitadDerecha[" + j + "] (" + mitadDerecha[j] + ")");
             if (mitadIzquierda[i] <= mitadDerecha[j]) {
                 System.out.println("Resultado verdadero: reescribiendo array[" + k + "] con valor " + mitadIzquierda[i]);
@@ -57,20 +57,20 @@ public class MergeSortIterativo {
             k++;
         }
         
-        if (i < tamanoIzquierda) {
+        if (i < tamañoIzquierda) {
             System.out.println("Copiando los elementos restantes de la mitad izquierda...");
         }
-        while (i < tamanoIzquierda) {
+        while (i < tamañoIzquierda) {
             System.out.println("Reescribiendo array[" + k + "] con valor " + mitadIzquierda[i]);
             array[k] = mitadIzquierda[i];
             i++;
             k++;
         }
         
-        if (j < tamanoDerecha) {
+        if (j < tamañoDerecha) {
             System.out.println("Copiando los elementos restantes de la mitad derecha...");
         }
-        while (j < tamanoDerecha) {
+        while (j < tamañoDerecha) {
             System.out.println("Reescribiendo array[" + k + "] con valor " + mitadDerecha[j]);
             array[k] = mitadDerecha[j];
             j++;

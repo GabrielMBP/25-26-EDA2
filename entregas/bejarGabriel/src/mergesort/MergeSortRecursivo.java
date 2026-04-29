@@ -41,17 +41,17 @@ public class MergeSortRecursivo {
 
     private static void fusionar(int[] array, int izquierda, int medio, int derecha) {
         String ind = obtenerIndentacion(nivelRecursion);
-        int tamanoIzquierda = medio - izquierda + 1;
-        int tamanoDerecha = derecha - medio;
+        int tamañoIzquierda = medio - izquierda + 1;
+        int tamañoDerecha = derecha - medio;
         
-        int[] mitadIzquierda = new int[tamanoIzquierda];
-        int[] mitadDerecha = new int[tamanoDerecha];
+        int[] mitadIzquierda = new int[tamañoIzquierda];
+        int[] mitadDerecha = new int[tamañoDerecha];
         
-        System.out.println(ind + "Copiando datos a arreglos temporales de tamanos " + tamanoIzquierda + " y " + tamanoDerecha);
-        for (int i = 0; i < tamanoIzquierda; i++) {
+        System.out.println(ind + "Copiando datos a arreglos temporales de tamanos " + tamañoIzquierda + " y " + tamañoDerecha);
+        for (int i = 0; i < tamañoIzquierda; i++) {
             mitadIzquierda[i] = array[izquierda + i];
         }
-        for (int i = 0; i < tamanoDerecha; i++) {
+        for (int i = 0; i < tamañoDerecha; i++) {
             mitadDerecha[i] = array[medio + 1 + i];
         }
         
@@ -59,7 +59,7 @@ public class MergeSortRecursivo {
         int j = 0;
         int k = izquierda;
         
-        while (i < tamanoIzquierda && j < tamanoDerecha) {
+        while (i < tamañoIzquierda && j < tamañoDerecha) {
             System.out.println(ind + "Comparando mitadIzquierda[" + i + "] (" + mitadIzquierda[i] + ") <= mitadDerecha[" + j + "] (" + mitadDerecha[j] + ")");
             if (mitadIzquierda[i] <= mitadDerecha[j]) {
                 System.out.println(ind + "Resultado verdadero: insertando " + mitadIzquierda[i] + " en array[" + k + "]");
@@ -73,20 +73,20 @@ public class MergeSortRecursivo {
             k++;
         }
         
-        if (i < tamanoIzquierda) {
+        if (i < tamañoIzquierda) {
             System.out.println(ind + "Vaciando elementos restantes de la mitad izquierda:");
         }
-        while (i < tamanoIzquierda) {
+        while (i < tamañoIzquierda) {
             System.out.println(ind + "Insertando " + mitadIzquierda[i] + " en array[" + k + "]");
             array[k] = mitadIzquierda[i];
             i++;
             k++;
         }
         
-        if (j < tamanoDerecha) {
+        if (j < tamañoDerecha) {
             System.out.println(ind + "Vaciando elementos restantes de la mitad derecha:");
         }
-        while (j < tamanoDerecha) {
+        while (j < tamañoDerecha) {
             System.out.println(ind + "Insertando " + mitadDerecha[j] + " en array[" + k + "]");
             array[k] = mitadDerecha[j];
             j++;
