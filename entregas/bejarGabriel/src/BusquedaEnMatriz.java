@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class BusquedaEnMatriz {
@@ -24,26 +23,28 @@ public class BusquedaEnMatriz {
         int filaActual = 0;
         int columnaActual = matriz[0].length - 1;
         boolean fueEncontrado = false;
+        int numeroComparacion = 0;
 
         System.out.println("Iniciando la busqueda...");
 
         while (filaActual < matriz.length && columnaActual >= 0 && !fueEncontrado) {
+            numeroComparacion++;
             int valorActual = matriz[filaActual][columnaActual];
 
             if (valorObjetivo == valorActual) {
-                System.out.println("Actual: " + valorActual + ". Coincidencia exacta. Encontrado.");
+                System.out.println("Comparacion " + numeroComparacion + " - Actual: " + valorActual + ". Coincidencia exacta. Encontrado.");
                 fueEncontrado = true;
             } else if (valorObjetivo < valorActual) {
-                System.out.println("Actual: " + valorActual + ". " + valorObjetivo + " es menor. Nos movemos a la izquierda.");
+                System.out.println("Comparacion " + numeroComparacion + " - Actual: " + valorActual + ". " + valorObjetivo + " es menor. Nos movemos a la izquierda.");
                 columnaActual--;
             } else {
-                System.out.println("Actual: " + valorActual + ". " + valorObjetivo + " es mayor. Nos movemos hacia abajo.");
+                System.out.println("Comparacion " + numeroComparacion + " - Actual: " + valorActual + ". " + valorObjetivo + " es mayor. Nos movemos hacia abajo.");
                 filaActual++;
             }
         }
 
         if (!fueEncontrado) {
-            System.out.println("Busqueda finalizada. El valor " + valorObjetivo + " no existe en la matriz.");
+            System.out.println("Busqueda finalizada. El valor " + valorObjetivo + " no existe en la matriz. Total de comparaciones: " + numeroComparacion);
         }
     }
 }
